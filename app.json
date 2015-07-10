@@ -1,0 +1,21 @@
+{
+   "mobile" : false,
+   "screenshotUrl" : "",
+   "highlights" : [
+      ""
+   ],
+   "articleUrl" : "",
+   "description" : "A simple nodeJS project that uses the bleno node module on Intel IoT platforms to advertise it's presence, read and write data via it's service and corresponding characteristic for Bluetooth Low Energy (BLE) communication.",
+   "projectTypeName" : "com.intel.xdk.projecttype.iotapp",
+   "title" : "(BLE) BLE-Peripheral",
+   "appPreview" : false,
+   "relName" : "4.0.0",
+   "tooltip" : "A simple nodeJS project that uses the bleno node module on Intel IoT platforms to advertise it's presence, read and write data via it's service and corresponding characteristic for Bluetooth Low Energy (BLE) communication.",
+   "iconUrl" : "",
+   "repoName" : "iotapp-template-iot-ble-peripheral",
+   "appName" : "demo.ble-peripheral",
+   "keywords" : [
+      ""
+   ],
+   "visible" : true
+}
