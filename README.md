@@ -12,6 +12,7 @@ In order to leverage this project successfully, you will need to use a compatibl
 ###Intel(R) Edison & Intel(R) Galileo
 ####Enabling BLE
 Within a SSH or Serial Terminal connection, type the following commands,
+`
 rfkill unblock bluetooth 
 hciconfig hci0 up
 
@@ -19,19 +20,24 @@ vi /etc/opkg/base-feeds.conf (insert only following lines)
 src/gz all http://repo.opkg.net/edison/repo/all 
 src/gz edison http://repo.opkg.net/edison/repo/edison 
 src/gz core2-32 http://repo.opkg.net/edison/repo/core2-32
+`
 
 *For more information on the vi editor, visit* http://www.cs.colostate.edu/helpdocs/vi.html
 
+`
 opkg update 
 opkg install bluez5-dev
+`
 
 *Note:* If bluez fails to install this version, still proceed with remainding steps.
 
 ####Prerequisite for Bleno - node package to work successfully
 Within a SSH or Serial Terminal connection, type the following commands,
+`
 rfkill unblock bluetooth 
 killall bluetoothd (or, more permanently) systemctl disable bluetooth 
 hciconfig hci0 up 
+`
 
 You should now be able to use BLE in your project.
 
@@ -48,6 +54,100 @@ After installing the neccessary node modules, press the upload and run buttons t
 **Mobile Companion App** BLE-Central - https://github.com/gomobile/sample-ble-central
 *  The mobile companion app, BLE-Central is under Statrt A New Project > HTML5 Companion Hybrid Mobile or Web App > Samples and Demos > General > HTML5 + Cordova section.
 
+####Getting Started with Bleno Cordova* Plug-in
+#####Design Considerations
+The **first operation** is to set up an eventlistener for the "stateChange" event. Within this function block, it is recommended to startAdvertising your service only when the state is in powerOn.
+```javascript
+bleno.on('stateChange', function(state) {
+  console.log('on -> stateChange: ' + state);
+
+  if (state === 'poweredOn') {
+    bleno.startAdvertising('feedback', ['fc00']);
+  } else {
+    bleno.stopAdvertising();
+  }
+});
+```
+The **second operation** is to set up an eventlistener for the "advertisingStart" event. Within this function block, set your primary service with it's unique UUID and characteristics attributes.
+```javascript
+bleno.on('advertisingStart', function(error) {
+  console.log('on -> advertisingStart: ' + (error ? 'error ' + error : 'success'));
+
+  if (!error) {
+    bleno.setServices([
+      new BlenoPrimaryService({
+        uuid: 'fc00',
+        characteristics: [
+          new FirstCharacteristic()
+        ]
+      })
+    ]);
+  }
+});
+```
+
+**Service Characteristic setup**
+```javascript
+var FirstCharacteristic = function() {
+  FirstCharacteristic.super_.call(this, {
+    uuid: 'fc0f',
+    properties: ['read', 'write', 'notify'],
+    value: null
+  });
+
+  this._value = new Buffer("Hello World from Edison!", "utf-8");
+  console.log("Characterisitic's value: "+this._value);
+    
+  this._updateValueCallback = null;
+};
+```
+
+**Communication request handlers for the BLE peripheral can be managed by the following functions:** 
+```javascript
+FirstCharacteristic.prototype.onReadRequest = function(offset, callback) {
+  console.log('FirstCharacteristic - onReadRequest: value = ' + this._value.toString("utf-8"));
+
+  callback(this.RESULT_SUCCESS, this._value);
+};
+
+FirstCharacteristic.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
+  this._value = data;
+    console.log('FirstCharacteristic - onWriteRequest: value = ' + this._value.toString("utf-8"));
+
+  if (this._updateValueCallback) {
+    console.log('FirstCharacteristic - onWriteRequest: notifying');
+
+    this._updateValueCallback(this._value);
+  }
+
+  callback(this.RESULT_SUCCESS);
+};
+
+FirstCharacteristic.prototype.onSubscribe = function(maxValueSize, updateValueCallback) {
+  console.log('FirstCharacteristic - onSubscribe');
+
+  this._updateValueCallback = updateValueCallback;
+};
+
+FirstCharacteristic.prototype.onUnsubscribe = function() {
+  console.log('FirstCharacteristic - onUnsubscribe');
+
+  this._updateValueCallback = null;
+};
+```
+
+
+
+The **third operation** is to set up an eventlisrerner for the "connect" and "disconnect" event.
+```javascript
+bleno.on('accept', function(clientAddress) {
+    console.log("Accepted Connection with Client Address: " + clientAddress);
+});
+
+bleno.on('disconnect', function(clientAddress) {
+    console.log("Disconnected Connection with Client Address: " + clientAddress);
+});
+```
 
 Intel(R) XDK IoT Edition
 -------------------------------------------
@@ -66,7 +166,7 @@ Important App Files
 
 License Information Follows
 ---------------------------
-Copyright (c) 2014, Intel Corporation. All rights reserved.
+Copyright (c) 2015, Intel Corporation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
 are permitted provided that the following conditions are met:
