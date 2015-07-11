@@ -45,6 +45,10 @@ You can installed the required node modules for this project which are found in 
 ####(Intel XDK IoT Edition) Upload & Run project
 After installing the neccessary node modules, press the upload and run buttons to execute your project on your board. 
 
+**Mobile Companion App** BLE-Central - https://github.com/gomobile/sample-ble-central
+*  The mobile companion app, BLE-Central is under Statrt A New Project > HTML5 Companion Hybrid Mobile or Web App > Samples and Demos > General > HTML5 + Cordova section.
+
+
 Intel(R) XDK IoT Edition
 -------------------------------------------
 This template is part of the Intel(R) XDK IoT Edition. 
