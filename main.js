@@ -11,7 +11,11 @@ bleno.on('stateChange', function(state) {
 
   if (state === 'poweredOn') {
     bleno.startAdvertising('feedback', ['fc00']);
-  } else {
+  }   
+  else {
+    if(state === 'unsupported'){
+      console.log("NOTE: BLE and Bleno configurations not enabled on board, see README.md for more details...");
+    }
     bleno.stopAdvertising();
   }
 });
