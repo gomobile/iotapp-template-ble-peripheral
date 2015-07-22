@@ -10,9 +10,9 @@ In order to leverage this project successfully, you will need to use a compatibl
 
 
 ###Intel(R) Edison & Intel(R) Galileo
-####Enabling BLE
+####First time - Enabling BLE
 Within a SSH or Serial Terminal connection, type the following commands,
-`
+```
 rfkill unblock bluetooth 
 hciconfig hci0 up
 
@@ -20,24 +20,24 @@ vi /etc/opkg/base-feeds.conf (insert only following lines)
 src/gz all http://repo.opkg.net/edison/repo/all 
 src/gz edison http://repo.opkg.net/edison/repo/edison 
 src/gz core2-32 http://repo.opkg.net/edison/repo/core2-32
-`
-
+```
 *For more information on the vi editor, visit* http://www.cs.colostate.edu/helpdocs/vi.html
 
-`
+```
 opkg update 
 opkg install bluez5-dev
-`
+```
 
-*Note:* If bluez fails to install this version, still proceed with remainding steps.
+**Note:** If bluez fails to install this version, still proceed with remainding steps.
 
 ####Prerequisite for Bleno - node package to work successfully
+**Note:** The following steps will need to be executed every time the board is restarted.
 Within a SSH or Serial Terminal connection, type the following commands,
-`
+```
 rfkill unblock bluetooth 
 killall bluetoothd (or, more permanently) systemctl disable bluetooth 
 hciconfig hci0 up 
-`
+```
 
 You should now be able to use BLE in your project.
 
