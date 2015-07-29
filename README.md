@@ -153,7 +153,7 @@ Intel(R) XDK IoT Edition
 -------------------------------------------
 This template is part of the Intel(R) XDK IoT Edition. 
 Download the Intel(R) XDK IoT Edition at https://software.intel.com/en-us/html5/xdk-iot. To see the technical details of the sample, 
-please visit the sample article page at TBA.
+please visit the sample article page at https://software.intel.com/en-us/creating-a-bluetooth-low-energy-app/.
 
 
 Important App Files

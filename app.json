@@ -4,7 +4,7 @@
    "highlights" : [
       ""
    ],
-   "articleUrl" : "",
+   "articleUrl" : "https://software.intel.com/en-us/creating-a-bluetooth-low-energy-app",
    "description" : "A simple nodeJS project that uses the bleno node module on Intel IoT platforms to advertise it's presence, read and write data via it's service and corresponding characteristic for Bluetooth Low Energy (BLE) communication. The mobile companion app, BLE-Central is under HTML5 Companion Hybrid Mobile App > Samples and Demos > General > HTML5 + Cordova.",
    "projectTypeName" : "com.intel.xdk.projecttype.iotapp",
    "title" : "(BLE) BLE-Peripheral",
