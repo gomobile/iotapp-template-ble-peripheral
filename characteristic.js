@@ -1,3 +1,6 @@
+/*jslint node:true,vars:true,bitwise:true,unparam:true */
+/*jshint unused:true */
+
 var util = require('util');
 
 var bleno = require('bleno');
