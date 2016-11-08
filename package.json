@@ -1,5 +1,5 @@
 {
-  "name": "blePeripheralapp",
+  "name": "xdk-iot-ble-peripheral",
   "description": "",
   "version": "0.0.0",
   "main": "main.js",
