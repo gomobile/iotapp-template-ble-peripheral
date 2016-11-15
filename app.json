@@ -6,10 +6,10 @@
   "visible" : true,
   "sortWeight" : "0.0",
   "repoName" : "iotapp-template-iot-ble-peripheral",
-  "tooltip" : "A simple nodeJS project that uses the bleno node module on Intel IoT platforms to advertise it's presence, read and write data via it's service and corresponding characteristic for Bluetooth Low Energy (BLE) communication. The mobile companion app, BLE-Central is under HTML5 Companion Hybrid Mobile App > Samples and Demos > General > HTML5 + Cordova.",
-  "description" : "A simple nodeJS project that uses the bleno node module on Intel IoT platforms to advertise it's presence, read and write data via it's service and corresponding characteristic for Bluetooth Low Energy (BLE) communication. The mobile companion app, BLE-Central is under HTML5 Companion Hybrid Mobile App > Samples and Demos > General > HTML5 + Cordova.",
+  "tooltip" : "Use the 'bleno' node module to advertise presence. Read and write data via BLE to a mobile companion app.",
+  "description" : "A simple Node.js project that uses the 'bleno' node module, on select Intel IoT platforms, to advertise the IoT device's presence. Also reads and writes data via Bluetooth Low Energy (BLE) communication with a corresponding mobile companion Cordova mobile app. The companion app is named 'BLE Central' and can be found under the samples section for HTML5 Companion Mobile Apps.",
   "articleUrl" : "https://software.intel.com/en-us/creating-a-bluetooth-low-energy-app",
-  "keywords" : [""],
+  "keywords" : ["Bluetooth","BLE"],
   "targets": ["edison","galileo"],
   "runtimes": ["node"]
 }
