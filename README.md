@@ -168,15 +168,24 @@ bleno.on('disconnect', function(clientAddress) {
 });
 ```
 
-Important Sample App Files
---------------------------
+Important App Files
+-------------------
 * main.js
 * characteristic.js
 * package.json
 
-Important Sample Project Files
-------------------------------
+Important Project Files
+-----------------------
 * README.md
 * LICENSE.md
-* project-name.xdk
-* project-name.xdke
+* <project-name>.xdk
+
+Tested IoT Node.js Platforms
+----------------------------
+* [Intel® Galileo Board](http://intel.com/galileo)
+* [Intel® Edison Development Platform](http://intel.com/edison)
+
+This sample can run on other IoT [Node.js](http://nodejs.org) development
+platforms, that include the appropriate sensor hardware, but may require
+changes to the I/O initialization and configuration code in order to work on
+those other platforms.

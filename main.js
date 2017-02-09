@@ -1,30 +1,26 @@
-/*jslint node:true,vars:true,bitwise:true,unparam:true */
-
-/*jshint unused:true */
-
 /*
-The BLE - Peripheral Node.js sample application distributed within Intel® XDK IoT Edition under the IoT with Node.js Projects project creation option showcases how to advertise it's presence, read and write data via it's service and corresponding characteristic for Bluetooth Low Energy (BLE) communication.
+ * Use the 'bleno' node module to advertise your IoT device's presence as a
+ * BlueTooth Low Energy peripheral device.
+ *
+ * Reads and writes data via a Bluetooth Low Energy (BLE) communication
+ * channel with a corresponding mobile companion Cordova mobile app. The
+ * companion app is named 'BLE Central' and can be found under the samples
+ * section for HTML5 Companion Mobile Apps.
+ *
+ * Supported Intel IoT development boards are identified in the code.
+ *
+ * See LICENSE.md for license terms and conditions.
+ *
+ * https://software.intel.com/en-us/xdk/docs/using-templates-nodejs-iot
+ */
 
-MRAA - Low Level Skeleton Library for Communication on GNU/Linux platforms
-Library in C/C++ to interface with Galileo & other Intel platforms, in a structured and sane API with port nanmes/numbering that match boards & with bindings to javascript & python.
+/* spec jslint and jshint lines for desired JavaScript linting */
+/* see http://www.jslint.com/help.html and http://jshint.com/docs */
+/* jslint node:true */
+/* jshint unused:true */
 
-Steps for installing/updating MRAA & UPM Library on Intel IoT Platforms with IoTDevKit Linux* image
-Using a ssh client: 
-1. echo "src maa-upm http://iotdk.intel.com/repos/1.1/intelgalactic" > /etc/opkg/intel-iotdk.conf
-2. opkg update
-3. opkg upgrade
+"use strict" ;
 
-OR
-In Intel XDK IoT Edition under the Develop Tab (for Internet of Things Embedded Application)
-Develop Tab
-1. Connect to board via the IoT Device Drop down (Add Manual Connection or pick device in list)
-2. Press the "Settings" button
-3. Click the "Update libraries on board" option
-
-Review README.md file for more information about enabling bluetooth and completing the desired configurations.
-
-Article: https://software.intel.com/en-us/creating-a-bluetooth-low-energy-app/ 
-*/
 
 var bleno = require('bleno');
 
@@ -39,7 +35,7 @@ bleno.on('stateChange', function(state) {
 
   if (state === 'poweredOn') {
     bleno.startAdvertising('feedback', ['fc00']);
-  }   
+  }
   else {
     if(state === 'unsupported'){
       console.log("NOTE: BLE and Bleno configurations not enabled on board, see README.md for more details...");
