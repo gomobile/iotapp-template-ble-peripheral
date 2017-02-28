@@ -1,5 +1,6 @@
 Intel® XDK IoT Node.js\* BLE Peripheral App
 ===========================================
+
 See [LICENSE.md](LICENSE.md) for license terms and conditions.
 
 This sample application is distributed as part of the
@@ -19,23 +20,28 @@ information regarding the upm sensor and actuator library APIs.
 
 App Overview
 ------------
+
 A simple nodeJS project that uses the bleno node module on Intel
 IoT platforms to advertise it's presence, read and write data via
 it's service and corresponding characteristic for Bluetooth Low
 Energy (BLE) communication.
 
-###Intel(R) Edison
+### Intel(R) Edison
+
 In order to leverage this project successfully, you will need to
 enable bluetooth and disable the bluetooth daemon on Intel(R) Edison.
 
-###Intel(R) Galileo
+### Intel(R) Galileo
+
 In order to leverage this project successfully, you will need to
 use a compatible BLE product such as the
 [Grove - BLE](http://www.seeedstudio.com/depot/Grove-BLE-p-1929.html)
 
 
-###Intel(R) Edison & Intel(R) Galileo
-####First time - Enabling BLE
+### Intel(R) Edison & Intel(R) Galileo
+
+#### First time - Enabling BLE
+
 Within a SSH or Serial Terminal connection, type the following commands,
 ```
 rfkill unblock bluetooth
@@ -55,7 +61,8 @@ opkg install bluez5-dev
 
 **Note:** If bluez fails to install this version, still proceed with remainding steps.
 
-####Prerequisite for Bleno - node package to work successfully
+#### Prerequisite for Bleno - node package to work successfully
+
 **Note:** The following steps will need to be executed every time the board is restarted.
 Within a SSH or Serial Terminal connection, type the following commands,
 ```
@@ -66,21 +73,25 @@ hciconfig hci0 up
 
 You should now be able to use BLE in your project.
 
-####(Intel XDK IoT Edition) Install node modules
+#### (Intel XDK IoT Edition) Install node modules
+
 Within the "manage your xdk daemon and IoT device" menu, check the following boxes
 * Clean '/node_modules' before building
 * Run npm install directly on IoT Device (requires internet connection on device)
 
 You can installed the required node modules for this project which are found in the package.json file by pressing the Build/Install button.
 
-####(Intel XDK IoT Edition) Upload & Run project
+#### (Intel XDK IoT Edition) Upload & Run project
+
 After installing the neccessary node modules, press the upload and run buttons to execute your project on your board.
 
 **Mobile Companion App** BLE-Central - https://github.com/gomobile/sample-ble-central
 *  The mobile companion app, BLE-Central is under Statrt A New Project > HTML5 Companion Hybrid Mobile or Web App > Samples and Demos > General > HTML5 + Cordova section.
 
-####Getting Started with Bleno Cordova* Plug-in
-#####Design Considerations
+#### Getting Started with Bleno Cordova* Plug-in
+
+##### Design Considerations
+
 The **first operation** is to set up an eventlistener for the "stateChange" event. Within this function block, it is recommended to startAdvertising your service only when the state is in powerOn.
 ```javascript
 bleno.on('stateChange', function(state) {
@@ -176,18 +187,21 @@ bleno.on('disconnect', function(clientAddress) {
 
 Important App Files
 -------------------
+
 * main.js
 * characteristic.js
 * package.json
 
 Important Project Files
 -----------------------
+
 * README.md
 * LICENSE.md
 * \<project-name\>.xdk
 
 Tested IoT Node.js Platforms
 ----------------------------
+
 * [Intel® Galileo Board](http://intel.com/galileo)
 * [Intel® Edison Development Platform](http://intel.com/edison)
 
